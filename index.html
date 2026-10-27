@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Online stores for alpine ski racing gear in the US and Canada: race shops, national team kit, base layers, FIS cut-resistant layers and used race skis.">
+<title>Where to Find Online Ski Racing Gear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a start list. Country sections, each a course of gate-panel icons alternating red/blue like a GS course. */
+:root {
+  --snow: #f4f7fa;
+  --panel: #ffffff;
+  --ink: #0e1a24;
+  --muted: #566573;
+  --line: #d9e1e8;
+  --gate-red: #d2232b;
+  --gate-blue: #1d4cc0;
+  --on-gate: #ffffff;
+  --focus: #1d4cc0;
+  --font-display: "Saira Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --snow: #0b1118; --panel: #121b24; --ink: #e6edf3; --muted: #95a4b2; --line: #24313d;
+    --gate-red: #e5444c; --gate-blue: #4a78ea; --on-gate: #ffffff; --focus: #7ea2ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --snow: #0b1118; --panel: #121b24; --ink: #e6edf3; --muted: #95a4b2; --line: #24313d;
+  --gate-red: #e5444c; --gate-blue: #4a78ea; --on-gate: #ffffff; --focus: #7ea2ff;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--snow);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 56px;
+  display: grid;
+  gap: 40px;
+}
+
+/* Header */
+header { display: grid; gap: 14px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 .r { color: var(--gate-red); }
+h1 .b { color: var(--gate-blue); }
+.lede { margin: 0; max-width: 62ch; color: var(--muted); }
+
+/* Controls */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font: 500 13px/1 var(--font-body);
+  padding: 9px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--snow); border-color: var(--ink); }
+.chip:focus-visible, .search:focus-visible, .card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.search {
+  flex: 1 1 220px;
+  max-width: 320px;
+  font: 400 14px/1 var(--font-body);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Sections */
+section { display: grid; gap: 16px; }
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 8px;
+}
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.section-count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 12px;
+}
+.card {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.card:hover { border-color: var(--ink); transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+
+/* Gate-panel icon: a flag panel stretched between two gate poles */
+.gate {
+  position: relative;
+  width: 64px; height: 64px;
+  display: grid; place-items: center;
+  padding-inline: 6px;
+}
+.gate::before, .gate::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0;
+  width: 4px; border-radius: 2px;
+  background: var(--gate-color);
+}
+.gate::before { left: 0; }
+.gate::after { right: 0; }
+.gate span {
+  width: 100%; height: 46px;
+  display: grid; place-items: center;
+  background: var(--gate-color);
+  color: var(--on-gate);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+}
+.gate.red { --gate-color: var(--gate-red); }
+.gate.blue { --gate-color: var(--gate-blue); }
+
+.meta { display: grid; gap: 3px; min-width: 0; }
+.name { font-weight: 600; font-size: 16px; line-height: 1.25; }
+.loc { font-size: 13px; color: var(--muted); }
+.what { font-size: 14px; margin-top: 4px; }
+.brands { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.brands b { font-weight: 600; color: var(--ink); }
+mark { background: color-mix(in srgb, var(--gate-blue) 22%, transparent); color: inherit; border-radius: 2px; padding: 0 1px; }
+.foot { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-top: 6px; }
+.domain { font-family: var(--font-mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+}
+
+.empty { color: var(--muted); padding: 8px 0; margin: 0; }
+
+/* National team cards: icon links to the main store, list holds every store */
+.card.team:hover { border-color: var(--line); transform: none; }
+a.gate { text-decoration: none; border-radius: 4px; }
+a.gate:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.gate.code span { font-size: 18px; letter-spacing: 0.04em; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.1; }
+.buy { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.buy li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.buy a { color: var(--ink); font-size: 14px; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.buy a:hover { text-decoration-color: var(--ink); }
+.buy a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.section-note { margin: 0; font-size: 14px; color: var(--muted); max-width: 78ch; }
+.section-note a { color: var(--ink); }
+
+footer {
+  display: grid; gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  font-size: 13px; color: var(--muted);
+  max-width: 78ch;
+}
+footer p { margin: 0; }
+footer strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Alpine racing · USA &amp; Canada · checked Oct 2026</div>
+    <h1>Where to Find Online <span class="r">Ski</span> <span class="b">Racing</span> Gear</h1>
+    <p class="lede">Online stores that stock race-stock skis and boots, GS suits, gate protection, race wax and tuning tools, and course equipment. Each icon opens the shop's race department in a new tab. Below the shops: national team kit for 2026/27, the base layers teams wear, FIS cut-resistant layers, and where to find used race skis.</p>
+    <div class="controls">
+      <div class="chips" role="group" aria-label="Filter by what the shop sells">
+        <button class="chip" type="button" id="f-all" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" id="f-shop" data-filter="shop" aria-pressed="false">Race skis, boots &amp; suits</button>
+        <button class="chip" type="button" id="f-tune" data-filter="tune" aria-pressed="false">Tuning &amp; wax</button>
+        <button class="chip" type="button" id="f-course" data-filter="course" aria-pressed="false">Gates &amp; club supply</button>
+        <button class="chip" type="button" id="f-team" data-filter="team" aria-pressed="false">National team gear</button>
+        <button class="chip" type="button" id="f-base" data-filter="base" aria-pressed="false">Base layers</button>
+        <button class="chip" type="button" id="f-used" data-filter="used" aria-pressed="false">Used race skis</button>
+      </div>
+      <input class="search" id="q" type="search" placeholder="Search shop, team or brand, e.g. Fischer" aria-label="Search shops">
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <section id="usa" aria-labelledby="h-usa">
+    <div class="section-head"><h2 id="h-usa">United States</h2><span class="section-count" id="c-usa"></span></div>
+    <div class="grid" id="g-usa"></div>
+    <p class="empty" id="e-usa" hidden>No US shops match this filter.</p>
+  </section>
+
+  <section id="canada" aria-labelledby="h-can">
+    <div class="section-head"><h2 id="h-can">Canada</h2><span class="section-count" id="c-can"></span></div>
+    <div class="grid" id="g-can"></div>
+    <p class="empty" id="e-can" hidden>No Canadian shops match this filter.</p>
+  </section>
+
+  <section id="teams" aria-labelledby="h-team">
+    <div class="section-head"><h2 id="h-team">National team gear · 2026/27</h2><span class="section-count" id="c-team"></span></div>
+    <p class="section-note">The brand each team wears this season and where its collection is sold. Several teams changed outfitter for 2026/27. <a href="https://teamskiwear.com/en/shop/" target="_blank" rel="noopener noreferrer">TeamSkiWear</a> stocks eight of these teams in one place; it prices in euros and advertises worldwide shipping.</p>
+    <div class="grid" id="g-team"></div>
+    <p class="empty" id="e-team" hidden>No teams match this search.</p>
+  </section>
+
+  <section id="base" aria-labelledby="h-base">
+    <div class="section-head"><h2 id="h-base">Base layers worn by national teams</h2><span class="section-count" id="c-base"></span></div>
+    <p class="section-note">Thermal base layers supplied to national teams. Base layers are often a separate deal from the outerwear partner.</p>
+    <div class="grid" id="g-base"></div>
+    <p class="empty" id="e-base" hidden>No base layer brands match this search.</p>
+  </section>
+
+  <section id="cut" aria-labelledby="h-cut">
+    <div class="section-head"><h2 id="h-cut">Cut-resistant base layers</h2><span class="section-count" id="c-cut"></span></div>
+    <p class="section-note">From 2026/27, FIS requires cut-resistant pants rated at least 3 stars (FIS-DITF 2021) at every FIS Alpine race, including FIS, NorAm, university and Masters events. Coverage runs from the hip bone to the boot, and the pants need the FIS label on the lower left leg. Shirts and full suits are recommended, not required. Diston and Iron-IC also make certified layers.</p>
+    <div class="grid" id="g-cut"></div>
+    <p class="empty" id="e-cut" hidden>No cut-resistant brands match this search.</p>
+  </section>
+
+  <section id="used" aria-labelledby="h-used">
+    <div class="section-head"><h2 id="h-used">Used race skis</h2><span class="section-count" id="c-used"></span></div>
+    <p class="section-note">Before buying used, check the length and radius against the FIS or age-group rules for the racer's category, and have the bindings checked and adjusted by a shop.</p>
+    <div class="grid" id="g-used"></div>
+    <p class="empty" id="e-used" hidden>No used-ski sites match this search.</p>
+  </section>
+
+  <footer>
+    <p><strong>Brand search.</strong> Each shop's brand list shows the brands seen on its race pages in October 2026, not its full catalog. A shop missing from a brand search may still carry that brand.</p>
+    <p><strong>Gear from Europe.</strong> Stores marked AT, CH, FR, IT or EU price in euros or francs; expect shipping costs and import duties to the US or Canada. Colmar's US store also notes extra customs fees may apply.</p>
+    <p><strong>Scope.</strong> Shops with a working online store and a dedicated race department or race-specific catalog. General outdoor retailers that only carry a few race items are left out.</p>
+    <p><strong>Lookalike warning.</strong> Race Place's store is <span class="domain">the-raceplace.com</span>. A similarly named site, <span class="domain">theraceplace-us.com</span>, could not be confirmed as theirs and is not listed.</p>
+    <p><strong>Not yet confirmed online.</strong> Race Stock Sports (Waterbury, VT) and Mountainside Ski &amp; Sports (Mechanicsburg, PA) are race service shops; neither showed a current online store.</p>
+  </footer>
+</div>
+
+<script>
+
+const SHOPS = [
+  // USA
+  { c: "usa", m: "RP", name: "Race Place", loc: "Bend, OR", what: "Race-stock skis, race boots, GS suits, protection, tune & wax.", url: "https://the-raceplace.com/", cats: ["shop","tune"] },
+  { c: "usa", m: "RW", name: "Race Werks", loc: "Online", what: "Race wax, tuning benches and vises, armor, race suits.", url: "https://race-werks.com/", cats: ["shop","tune"] },
+  { c: "usa", m: "PP", name: "Peak Performance Ski Shop", loc: "Killington, VT", what: "GS suits, side-zip pants, back and shin protection, race gloves.", url: "https://www.peakskishop.com/race-accessories/race-suits-clothing/", cats: ["shop"] },
+  { c: "usa", m: "AE", name: "Aspen East Ski Shop", loc: "Killington, VT", what: "Race suits, training shorts, side-zip pants, race helmets.", url: "https://www.aspeneast.com/ski/race-gear.html", cats: ["shop"] },
+  { c: "usa", m: "VS", name: "Vermont Ski and Sport", loc: "Vermont", what: "New and lightly used race skis and boots, bindings, protection.", url: "https://www.vermontskiandsport.com/collections/ski-race-room", cats: ["shop"] },
+  { c: "usa", m: "UG", name: "Utah Ski Gear", loc: "Sandy, UT", what: "SL and GS race poles, race wax, protective gear, speed suits.", url: "https://www.utahskigear.com/collections/racing-1", cats: ["shop","tune"] },
+  { c: "usa", m: "RR", name: "Reliable Racing Supply", loc: "Queensbury, NY", what: "Race apparel and protection, gates, timing, hill supplies. Since 1965.", url: "https://reliableracing.com/", cats: ["shop","course"] },
+  { c: "usa", m: "WC", name: "World Cup Supply", loc: "Bradford, VT", what: "SPM gates, panels, bibs and on-hill supplies for clubs and events.", url: "https://www.worldcupsupply.com/", cats: ["course"] },
+  { c: "usa", m: "TG", name: "Tognar Toolworks", loc: "Ashland, OR", what: "Race wax, edge guides, files and stones, vises, waxing irons.", url: "https://www.tognar.com/", cats: ["tune"] },
+  { c: "usa", m: "SW", name: "SlideWright", loc: "Online", what: "Edge and base tools, race-room vises, wax, binding mounting tools.", url: "https://www.slidewright.com/", cats: ["tune"] },
+  { c: "usa", m: "RX", name: "RaceWax.com", loc: "Online", what: "Family-owned tuning and wax supplier: kits, irons, brushes.", url: "https://www.racewax.com/", cats: ["tune"] },
+  // Canada
+  { c: "can", m: "ST", name: "Ski Town", loc: "Brossard, QC", what: "Race department: racing skis, boots, bindings, poles, skin suits.", url: "https://www.skitown.ca/en/race-department/", cats: ["shop"] },
+  { c: "can", m: "CB", name: "Corbetts", loc: "Ontario", what: "Race skis, boots, poles, helmets, guards and clothing. Since 1941.", url: "https://www.corbetts.com/categories/race.html", cats: ["shop"] },
+  { c: "can", m: "SB", name: "Skiis & Biikes", loc: "Toronto · Mississauga · Collingwood", what: "U8–U16 race kits, race skis and boots, suits, tuning and wax.", url: "https://skiisandbiikes.com/collections/ski-racing", cats: ["shop","tune"] },
+  { c: "can", m: "SD", name: "Sundance Ski Shop", loc: "Edmonton · Calgary", what: "Race clothing: GS suits, training wear, race skis.", url: "https://sundanceskishop.com/collections/race-clothing", cats: ["shop"] },
+  { c: "can", m: "SH", name: "Swiss Sports Haus", loc: "West Vancouver, BC", what: "Ski racing section with junior race skis and race equipment.", url: "https://swiss-sports-haus.com/", cats: ["shop"] },
+  { c: "can", m: "AO", name: "Alpine Ontario Store", loc: "Collingwood, ON", what: "Provincial association store: Karbon race suits, team gear.", url: "https://alpineontario.myshopify.com/", cats: ["shop"] }
+];
+
+// Brands seen on each shop's pages during research (Oct 2026). Not a full catalog.
+const BRANDS = {
+  "Race Place": ["Atomic","Dynastar","Fischer","HEAD","Nordica","Rossignol","Salomon","Völkl","Lange","Marker","LOOK","Aspire","Arctica","Karbon","POC","Spyder","Hestra","Leki","Level","Reusch","Shred"],
+  "Race Werks": ["Swix","Toko","Wend","Rode","Holmenkol","Race Service 1","Leki","Shred","Rossignol","SkiMan","Carrot"],
+  "Peak Performance Ski Shop": ["Atomic","Blizzard","Fischer","HEAD"],
+  "Aspen East Ski Shop": ["Arctica"],
+  "Vermont Ski and Sport": ["Atomic","HEAD","Fischer","Völkl","Dynastar","Dalbello"],
+  "Utah Ski Gear": ["Leki","POC","Swix"],
+  "World Cup Supply": ["SPM"],
+  "Tognar Toolworks": ["Swix","Toko","Wintersteiger","Dominator","FK/SKS","Sun Valley Ski Tools","OneBall","Binding Freedom","mountainFLOW","Purl"],
+  "SlideWright": ["SkiVisions","Tools4Boards","Sun Valley Ski Tools","Maplus","Purl","KUUsport","SkiMan","Snoli","Toko","Binding Freedom","FK/SKS","Sorma"],
+  "RaceWax.com": ["Toko"],
+  "Ski Town": ["Rossignol","HEAD","Tecnica","Spyder","POC","Helly Hansen","Level"],
+  "Corbetts": ["Rossignol","Völkl","Dalbello","Smith"],
+  "Skiis & Biikes": ["Dynastar","Atomic","Rossignol"],
+  "Swiss Sports Haus": ["Rossignol","Atomic","Blizzard","Stöckli","Völkl"],
+  "Alpine Ontario Store": ["Karbon","XSPEX"]
+};
+// Accent- and case-insensitive matching, so "volkl" finds "Völkl"
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+
+// Cards with several store links. title = who/what, brand = the brand, since = status line
+const TEAMS = [
+  { code: "USA", title: "U.S. Ski Team", brand: "The North Face", since: "Official apparel partner from 2026/27 through 2034. Replaced Kappa.",
+    note: "Fan line is on sale now; pieces from the competition kit drop later this season.",
+    buy: [{ l: "The North Face × U.S. Ski & Snowboard", u: "https://www.thenorthface.com/en-us/c/shop-all/the-north-face-x-us-ski-and-snowboard-829929", r: "US" }] },
+  { code: "CAN", title: "Canadian Alpine Ski Team", brand: "Helly Hansen", since: "Outerwear, base layers and race suits. Deal runs through 2026/27.",
+    buy: [{ l: "CANskiteam boutique at Sporting Life", u: "https://www.sportinglife.ca/en-CA/can-ski-team/", r: "CA" },
+          { l: "Alpine Canada shop", u: "https://shop.alpinecanada.org/collections/all", r: "CA" }] },
+  { code: "SUI", title: "Swiss-Ski", brand: "Descente", since: "Outfitter since 1978, race suits included. Extended to 2030.",
+    buy: [{ l: "Swiss-Ski official fan shop", u: "https://store.swiss-ski.ch/de", r: "CH" },
+          { l: "Powder7, Descente Swiss team pants", u: "https://www.powder7.com/Descente-Mens-Swiss-Ski-Pants/sale", r: "US" },
+          { l: "TeamSkiWear, Swiss team", u: "https://teamskiwear.com/product-category/teams/switzerland/page/2/", r: "EU" }] },
+  { code: "AUT", title: "Ski Austria (ÖSV)", brand: "Colmar", since: "New outfitter from 2026/27, replacing Schöffel.",
+    note: "Colmar's US store lists the Austrian team race suit and jacket in USD.",
+    buy: [{ l: "Colmar US, Austrian team kit", u: "https://www.colmar.com/us/man/ski/official-racing-suits", r: "US" },
+          { l: "derfanshop.at, Colmar Ski Austria", u: "https://www.derfanshop.at/colmar-ski-austria-race/", r: "AT" },
+          { l: "TeamSkiWear, Austrian team", u: "https://teamskiwear.com/en/product-category/teams/austria/", r: "EU" }] },
+  { code: "FRA", title: "Équipe de France (FFS)", brand: "Kappa", since: "Official partner from the 2026 season. Colmar's deal ended with Milano Cortina 2026.",
+    buy: [{ l: "Ekosport, FFS collection", u: "https://www.ekosport.fr/c/gam-GC250-ffs", r: "FR" },
+          { l: "TeamSkiWear, French team", u: "https://teamskiwear.com/fr/equipe-de-france-de-ski/", r: "EU" }] },
+  { code: "ITA", title: "Italian Team (FISI)", brand: "EA7 Emporio Armani", since: "FISI technical outfitter since 2022. 2026/27 kit unveiled October 2026.",
+    buy: [{ l: "TeamSkiWear, Italian team", u: "https://teamskiwear.com/product-category/teams/italy/", r: "EU" }] },
+  { code: "SWE", title: "Ski Team Sweden Alpine", brand: "Phenix", since: "Six-year deal from autumn 2024, race suits included.",
+    buy: [{ l: "Phenix Canada, Sweden team collection", u: "https://phenixski.ca/collections/limited-edition-mens-sweden-ski-team", r: "CA" },
+          { l: "TeamSkiWear, Swedish team", u: "https://teamskiwear.com/product-category/teams/sweden/", r: "EU" }] },
+  { code: "NOR", title: "Norwegian Alpine Team", brand: "Helly Hansen", since: "Clothing supplier, extended to 2030.",
+    note: "Helly Hansen sells a replica collection in select markets only.",
+    buy: [{ l: "Helly Hansen, Norwegian Alpine Ski Team", u: "https://www.hellyhansen.com/en_global/norwegian-alpine-ski-team", r: "Global" }] }
+];
+
+const BASE = [
+  { code: "UYN", title: "Austrian team (ÖSV)", brand: "UYN", since: "Technical base layers for the Austrian national ski team.",
+    buy: [{ l: "UYN, Austrian National Ski Team", u: "https://uynsports.com/en-uk/blogs/news/austria", r: "Global" }] },
+  { code: "XB", title: "Swiss-Ski", brand: "X-Bionic", since: "Official supplier since 2013: base layers and socks.",
+    note: "The contract was extended through 2026; a renewal was not confirmed.",
+    buy: [{ l: "X-Bionic, Swiss National Ski Team", u: "https://www.x-bionic.com/pages/athletes/swisski", r: "Global" }] },
+  { code: "HH", title: "Canadian and Norwegian teams", brand: "Helly Hansen", since: "Official base layer supplier to Alpine Canada; clothing supplier to the Norwegian alpine team.",
+    note: "Norway's team page features the H1 Pro Seamless Graphene top.",
+    buy: [{ l: "Helly Hansen, Norwegian Alpine Ski Team", u: "https://www.hellyhansen.com/en_global/norwegian-alpine-ski-team", r: "Global" },
+          { l: "CANskiteam boutique at Sporting Life", u: "https://www.sportinglife.ca/en-CA/can-ski-team/", r: "CA" }] },
+  { code: "TNF", title: "U.S. Ski Team", brand: "The North Face", since: "The 2026/27 deal includes base layers and mid-layers alongside outerwear.",
+    buy: [{ l: "The North Face × U.S. Ski & Snowboard", u: "https://www.thenorthface.com/en-us/c/shop-all/the-north-face-x-us-ski-and-snowboard-829929", r: "US" }] }
+];
+
+const CUT = [
+  { code: "VIX", title: "Cut-resistant pants, adult and youth", brand: "VIX", since: "FIS-certified Comfort Pro and FIS pants, $399–$499 at Race Place.",
+    buy: [{ l: "VIX Protection", u: "https://vixprotection.com/", r: "US" },
+          { l: "Race Place, cut-resistant layers", u: "https://the-raceplace.com/collections/cut-resistant-base-layers", r: "US" }] },
+  { code: "POC", title: "Resistance layer tights, adult and junior", brand: "POC", since: "Cut-resistant tights, $400–$440 at Race Place.",
+    buy: [{ l: "POC, ski race apparel", u: "https://poc.com/en-us/categories/snow/ski-race/apparel", r: "US" },
+          { l: "Race Place, cut-resistant layers", u: "https://the-raceplace.com/collections/cut-resistant-base-layers", r: "US" }] },
+  { code: "SHR", title: "Cut-resistant pants, adult and junior", brand: "Shred", since: "Cut-resistant pants, $380–$450 at Race Place.",
+    buy: [{ l: "Race Place, cut-resistant layers", u: "https://the-raceplace.com/collections/cut-resistant-base-layers", r: "US" }] },
+  { code: "EP", title: "3/4 pants, neck protector", brand: "Energiapura", since: "Adult 3/4 pants carry a 4-star FIS cut rating, $435 at Ski Essentials.",
+    buy: [{ l: "Ski Essentials, Energiapura pants", u: "https://www.skiessentials.com/products/energiapura-cut-resistant-adult-3-4-base-layer-pants-cr34lp4", r: "US" },
+          { l: "Energiapura, cut-resistant line", u: "https://www.energiapura.info/gb/content/78-pagina-cut-resistant", r: "IT" }] },
+  { code: "BEO", title: "FIS star cut-resistant pants", brand: "Beorbus", since: "C$450 at Station Ski & Ride, Markham, ON.",
+    buy: [{ l: "Station Ski & Ride, cut-resistant pants", u: "https://www.stationskiandride.com/fis-star-cut-resistant-ski-pants.html", r: "CA" }] }
+];
+
+const USED = [
+  { code: "SS", title: "Marketplace · US and Canadian sellers", brand: "SidelineSwap", since: "About 1,000 racing ski listings: SL, GS, FIS and junior, with or without bindings.",
+    buy: [{ l: "SidelineSwap, racing skis", u: "https://sidelineswap.com/shop/skiing/skis/racing/l31", r: "US" }] },
+  { code: "VS", title: "Shop · Vermont", brand: "Vermont Ski and Sport", since: "Used junior race skis with bindings, plus used adult and junior race boots.",
+    buy: [{ l: "Used junior race skis", u: "https://www.vermontskiandsport.com/collections/used-junior-race-skis", r: "US" },
+          { l: "Ski race room, new and used", u: "https://www.vermontskiandsport.com/collections/ski-race-room", r: "US" }] },
+  { code: "EB", title: "Marketplace", brand: "eBay", since: "Used SL, GS and junior race skis from private and shop sellers.",
+    buy: [{ l: "eBay, used racing skis", u: "https://www.ebay.com/sch/i.html?_nkw=used+racing+skis&_sop=12", r: "US" },
+          { l: "eBay, junior race skis", u: "https://www.ebay.com/b/Junior-Race-Downhill-Skis/260707/bn_7023393224", r: "US" }] },
+  { code: "AA", title: "Club classifieds · Alberta", brand: "Alberta Alpine Buy & Sell", since: "Race skis and boots posted by racing families in Calgary, Edmonton and the Bow Valley.",
+    buy: [{ l: "Alberta Alpine, buy and sell", u: "https://albertaalpine.ca/category/buy-and-sell/", r: "CA" }] }
+];
+
+function linkCard(t, i) {
+  const el = document.createElement("article");
+  el.className = "card team";
+  el.innerHTML = `
+    <a class="gate code ${i % 2 ? "blue" : "red"}" target="_blank" rel="noopener noreferrer"><span></span></a>
+    <div class="meta">
+      <div class="name"></div>
+      <div class="brand"></div>
+      <div class="loc since"></div>
+      <div class="what note"></div>
+      <ul class="buy"></ul>
+    </div>`;
+  const g = el.querySelector("a.gate");
+  g.href = t.buy[0].u;
+  g.setAttribute("aria-label", `${t.brand}: ${t.buy[0].l}. Opens in a new tab`);
+  el.querySelector(".gate span").textContent = t.code;
+  el.querySelector(".name").textContent = t.title;
+  el.querySelector(".brand").textContent = t.brand;
+  el.querySelector(".since").textContent = t.since;
+  const n = el.querySelector(".note");
+  if (t.note) n.textContent = t.note; else n.remove();
+  const ul = el.querySelector(".buy");
+  t.buy.forEach(b => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = b.u; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = b.l;
+    const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = b.r;
+    li.append(a, tag); ul.appendChild(li);
+  });
+  return el;
+}
+
+const LABEL = { shop: "Skis · boots · suits", tune: "Tuning & wax", course: "Gates & clubs" };
+const host = u => u.replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
+
+function card(s, i) {
+  const a = document.createElement("a");
+  a.className = "card";
+  a.href = s.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  a.setAttribute("aria-label", `${s.name}, ${s.loc}. Opens ${host(s.url)} in a new tab`);
+  a.innerHTML = `
+    <div class="gate ${i % 2 ? "blue" : "red"}" aria-hidden="true"><span></span></div>
+    <div class="meta">
+      <div class="name"></div>
+      <div class="loc"></div>
+      <div class="what"></div>
+      <div class="foot"><span class="domain"></span></div>
+    </div>`;
+  a.querySelector(".gate span").textContent = s.m;
+  a.querySelector(".name").textContent = s.name;
+  a.querySelector(".loc").textContent = s.loc;
+  a.querySelector(".what").textContent = s.what;
+  a.querySelector(".domain").textContent = host(s.url);
+  const brands = BRANDS[s.name] || [];
+  if (brands.length) {
+    const b = document.createElement("div");
+    b.className = "brands";
+    const lbl = document.createElement("b"); lbl.textContent = "Brands: ";
+    b.appendChild(lbl);
+    const nq = norm(query.trim());
+    brands.forEach((name, j) => {
+      if (j) b.appendChild(document.createTextNode(", "));
+      if (nq && norm(name).includes(nq)) { const m = document.createElement("mark"); m.textContent = name; b.appendChild(m); }
+      else b.appendChild(document.createTextNode(name));
+    });
+    a.querySelector(".what").after(b);
+  }
+  const foot = a.querySelector(".foot");
+  s.cats.forEach(c => { const t = document.createElement("span"); t.className = "tag"; t.textContent = LABEL[c]; foot.appendChild(t); });
+  return a;
+}
+
+let filter = "all", query = "";
+const LISTS = [
+  { id: "teams", key: "team", items: TEAMS, noun: ["team", "teams"], show: f => f === "all" || f === "team" },
+  { id: "base",  key: "base", items: BASE,  noun: ["brand", "brands"], show: f => f === "all" || f === "base" },
+  { id: "cut",   key: "cut",  items: CUT,   noun: ["brand", "brands"], show: f => f === "all" || f === "base" },
+  { id: "used",  key: "used", items: USED,  noun: ["site", "sites"], show: f => f === "all" || f === "used" }
+];
+const SHOP_FILTERS = ["all", "shop", "tune", "course"];
+
+function render() {
+  const q = norm(query.trim());
+  const showShops = SHOP_FILTERS.includes(filter);
+  let shops = 0, other = 0;
+
+  [["usa","g-usa","c-usa","e-usa"],["can","g-can","c-can","e-can"]].forEach(([c, g, cnt, e]) => {
+    document.getElementById(c === "usa" ? "usa" : "canada").hidden = !showShops;
+    const list = !showShops ? [] : SHOPS.filter(s => s.c === c)
+      .filter(s => filter === "all" || s.cats.includes(filter))
+      .filter(s => !q || norm([s.name, s.loc, s.what, host(s.url), ...(BRANDS[s.name] || [])].join(" ")).includes(q));
+    document.getElementById(g).replaceChildren(...list.map(card));
+    document.getElementById(cnt).textContent = `${list.length} ${list.length === 1 ? "shop" : "shops"}`;
+    document.getElementById(e).hidden = list.length > 0;
+    shops += list.length;
+  });
+
+  LISTS.forEach(L => {
+    const on = L.show(filter);
+    document.getElementById(L.id).hidden = !on;
+    const list = !on ? [] : L.items.filter(t => !q || norm([t.code, t.title, t.brand, t.since, t.note || "", ...t.buy.map(b => b.l)].join(" ")).includes(q));
+    document.getElementById("g-" + L.key).replaceChildren(...list.map(linkCard));
+    document.getElementById("c-" + L.key).textContent = `${list.length} ${list.length === 1 ? L.noun[0] : L.noun[1]}`;
+    document.getElementById("e-" + L.key).hidden = list.length > 0;
+    other += list.length;
+  });
+
+  document.getElementById("count").textContent = `${shops + other} listings shown`;
+}
+
+document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+  filter = b.dataset.filter;
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  render();
+}));
+document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+render();
+</script>
+
+</body>
+</html>
